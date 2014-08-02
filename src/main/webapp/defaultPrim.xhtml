@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <h:outputStylesheet library="css" name="style.css"/>
+</h:head>
+
+<h:body>
+    <div style="margin-left: 300px" >
+    <h:form>
+        <h2>Please leave a message</h2>
+        <p:spacer height="5" />
+        <p:separator style="margin-right: 550px"  />
+        <h:panelGrid columns="3" cellpadding="5">
+
+            <p:outputLabel for="name" value="Name: " />
+            <p:inputText id="name" value="#{messageBean.user.name}"  required="true" label="name">
+                <f:validateLength minimum="1" maximum="20"/>
+            </p:inputText>
+            <p:message for="name" display="name"/>
+
+            <p:outputLabel for="email" value="E-mail: " />
+            <p:inputText id="email" value="#{messageBean.user.email}" label="email" required="true" />
+            <p:message for="email" display="email"/>
+
+            <p:outputLabel for="homepage" value="Homepage: " />
+            <p:inputText id="homepage" value="#{messageBean.message.homepage}" label="homepage"/>
+            <p:message for="homepage" display="homepage"/>
+
+            <p:outputLabel for="text" value="Text: " />
+            <p:inputTextarea id="text" rows="10" cols="50" value="#{messageBean.message.text}" queryDelay="750" minQueryLength="4" />
+            <p:message for="text" display="text"/>
+
+            <p:messages id="msgs" showDetail="true" showSummary="true" />
+            <p:captcha label="Captcha" theme="blackglass" publicKey="6Ld7pMESAAAAAHd1VihJkqPUXAJVwU3Cghc8fzrq"/>
+
+
+        </h:panelGrid>
+
+        <p:spacer height="10" />
+
+        <div style="margin-right: 550px">
+            <p:separator />
+        </div>
+
+        <p:commandButton value="Send" action="#{messageBean.send()}"/>
+        <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" style="margin-right: 550px" />
+    </h:form>
+    </div>
+
+</h:body>
+
+</html>

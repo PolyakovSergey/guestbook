@@ -99,6 +99,14 @@
             <artifactId>hibernate-entitymanager</artifactId>
             <version>4.2.5.Final</version>
         </dependency>
+
+        <!--PrimeFs-->
+        <dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+            <version>5.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>
