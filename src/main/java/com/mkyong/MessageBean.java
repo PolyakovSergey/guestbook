@@ -57,6 +57,6 @@ public class MessageBean {
         User userFromBase = userService.add(user);
         message.setUser(userFromBase);
         messageService.add(message);
-        return "";
+        return "defaultPrim";
     }
 }
