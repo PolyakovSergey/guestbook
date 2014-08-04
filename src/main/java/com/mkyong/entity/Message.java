@@ -1,5 +1,7 @@
 package com.mkyong.entity;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -13,6 +15,7 @@ public class Message {
     private long id;
 
     @Column(name = "text")
+    @Type(type = "text")
     private String text;
 
     @Column(name = "homepage")

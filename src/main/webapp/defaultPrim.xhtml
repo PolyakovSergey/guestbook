@@ -11,32 +11,41 @@
 
 <h:body>
     <div style="margin-left: 300px" >
-    <h:form>
+    <h:form id="form">
         <h2>Please leave a message</h2>
         <p:spacer height="5" />
         <p:separator style="margin-right: 550px"  />
-        <h:panelGrid columns="3" cellpadding="5">
+        <h:panelGrid columns="2" cellpadding="5">
 
             <p:outputLabel for="name" value="Name: " />
-            <p:inputText id="name" value="#{messageBean.user.name}"  required="true" label="name">
+            <p:inputText id="name" value="#{messageBean.user.name}"  required="true" label="name"
+                         validatorMessage="Name: Invalid name format">
                 <f:validateLength minimum="1" maximum="20"/>
+                <f:validateRegex pattern="[A-Za-z0-9]+"/>
             </p:inputText>
-            <p:message for="name" display="name"/>
 
             <p:outputLabel for="email" value="E-mail: " />
-            <p:inputText id="email" value="#{messageBean.user.email}" label="email" required="true" />
-            <p:message for="email" display="email"/>
+            <p:inputText id="email" value="#{messageBean.user.email}" label="email" required="true"
+                         validatorMessage="E-mail: Invalid e-mail format">
+                <f:validateLength maximum="20"/>
+                <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
+            </p:inputText>
 
             <p:outputLabel for="homepage" value="Homepage: " />
-            <p:inputText id="homepage" value="#{messageBean.message.homepage}" label="homepage"/>
-            <p:message for="homepage" display="homepage"/>
+            <p:inputText id="homepage" value="#{messageBean.message.homepage}" label="homepage" required="false">
+                <!--<f:validateLength maximum="20"/>-->
+                <f:validator validatorId="com.mkyong.util.HomepageValidator"/>
+            </p:inputText>
+
 
             <p:outputLabel for="text" value="Text: " />
-            <p:inputTextarea id="text" rows="10" cols="50" value="#{messageBean.message.text}" queryDelay="750" minQueryLength="4" />
-            <p:message for="text" display="text"/>
+            <p:inputTextarea id="text" rows="10" cols="50" value="#{messageBean.message.text}" queryDelay="750" minQueryLength="4" required="true">
+                <f:validateLength maximum="1000"/>
+                <f:validator validatorId="com.mkyong.util.TextValidator"/>
+            </p:inputTextarea>
 
-            <p:messages id="msgs" showDetail="true" showSummary="true" />
-            <p:captcha label="Captcha" theme="blackglass" publicKey="6Ld7pMESAAAAAHd1VihJkqPUXAJVwU3Cghc8fzrq"/>
+            <p:outputLabel for="captcha" value="Enter the image code: " />
+            <p:captcha id="captcha" label="Captcha" theme="blackglass" publicKey="6Ld7pMESAAAAAHd1VihJkqPUXAJVwU3Cghc8fzrq"/>
 
 
         </h:panelGrid>
@@ -47,8 +56,9 @@
             <p:separator />
         </div>
 
-        <p:commandButton value="Send" action="#{messageBean.send()}"/>
-        <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" style="margin-right: 550px" />
+        <p:commandButton value="Send" action="#{messageBean.send()}" update=":form:name :form:email :form:homepage
+                                                                              :form:text" />
+        <p:messages id="messages" autoUpdate="true" closable="true" style="margin-right: 550px" />
     </h:form>
     </div>
 

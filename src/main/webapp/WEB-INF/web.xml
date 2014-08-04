@@ -59,4 +59,10 @@
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
 
+    <!--XSS security-->
+    <context-param>
+        <param-name>defaultHtmlEscape</param-name>
+        <param-value>true</param-value>
+    </context-param>
+
 </web-app>

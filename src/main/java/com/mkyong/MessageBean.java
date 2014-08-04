@@ -5,16 +5,19 @@ import com.mkyong.entity.User;
 import com.mkyong.service.MessageService;
 import com.mkyong.service.UserService;
 import org.springframework.context.annotation.Scope;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named
 @Scope("request")
-public class MessageBean {
+public class MessageBean  {
 
     @Inject
     MessageService messageService;
@@ -50,13 +53,47 @@ public class MessageBean {
         this.message = message;
     }
 
-    public String send(){
-        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Correct", "Correct");
-        FacesContext.getCurrentInstance().addMessage(null, msg);
+    private String getUserIpAddress(){
+        /*HttpServletRequest httpServletRequest = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+        String ip = httpServletRequest.getRemoteAddr();*/
+        String remoteAddress = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes())
+                                .getRequest().getRemoteAddr();
+        return remoteAddress;
+    }
 
+    private String getUserBrowserInfo(){
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+        String userAgent = externalContext.getRequestHeaderMap().get("User-Agent");
+
+        if(userAgent.contains("MSIE")){
+            return "Internet Explorer";
+        }
+        if(userAgent.contains("Firefox")){
+            return "Firefox";
+        }
+        if(userAgent.contains("Chrome")){
+            return "Chrome";
+        }
+        if(userAgent.contains("Opera")){
+            return "Opera";
+        }
+        if(userAgent.contains("Safari")){
+            return "Safari";
+        }
+        return "Unknown";
+    }
+
+
+
+    public String send(){
+        user.setBrowser(getUserBrowserInfo());
+        user.setIpAddress(getUserIpAddress());
         User userFromBase = userService.add(user);
         message.setUser(userFromBase);
         messageService.add(message);
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Done", "Message is sent!");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+        initNewUser();
         return "defaultPrim";
     }
 }
