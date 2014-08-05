@@ -1,4 +1,4 @@
-package com.mkyong.util;
+package com.ps.guestbook.util;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
@@ -9,7 +9,7 @@ import javax.faces.validator.ValidatorException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@FacesValidator("com.mkyong.util.HomepageValidator")
+@FacesValidator("com.ps.guestbook.util.HomepageValidator")
 public class HomepageValidator implements Validator {
 
     private static final String URL_PATTERN = "(http://)?(www\\.)?[A-Za-z0-9]+\\.[a-z]{2,3}";
@@ -26,7 +26,7 @@ public class HomepageValidator implements Validator {
         if (!(o.toString().isEmpty() || o.toString() == null)){
             matcher = pattern.matcher(o.toString());
             if(!matcher.matches()){
-                FacesMessage msg =  new FacesMessage("Homepage validation failed.", "Invalid Homepage format.");
+                FacesMessage msg =  new FacesMessage("Homepage: Invalid homepage format", "Homepage validation failed");
                 msg.setSeverity(FacesMessage.SEVERITY_ERROR);
                 throw new ValidatorException(msg);
             }

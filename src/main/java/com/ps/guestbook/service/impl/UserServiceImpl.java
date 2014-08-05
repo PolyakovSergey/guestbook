@@ -1,8 +1,8 @@
-package com.mkyong.service.impl;
+package com.ps.guestbook.service.impl;
 
-import com.mkyong.entity.User;
-import com.mkyong.repository.UserRepository;
-import com.mkyong.service.UserService;
+import com.ps.guestbook.entity.User;
+import com.ps.guestbook.repository.UserRepository;
+import com.ps.guestbook.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

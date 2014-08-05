@@ -1,4 +1,4 @@
-package com.mkyong.entity;
+package com.ps.guestbook.entity;
 
 import javax.persistence.*;
 
@@ -22,7 +22,6 @@ public class User {
 
     @Column(name = "user_browser")
     private String browser;
-
 
     public User() {
     }

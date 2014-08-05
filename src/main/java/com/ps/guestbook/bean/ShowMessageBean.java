@@ -1,7 +1,7 @@
-package com.mkyong;
+package com.ps.guestbook.bean;
 
-import com.mkyong.entity.Message;
-import com.mkyong.service.MessageService;
+import com.ps.guestbook.entity.Message;
+import com.ps.guestbook.service.MessageService;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ViewScoped;
@@ -13,17 +13,13 @@ import java.util.List;
 @Named
 @ViewScoped
 public class ShowMessageBean implements Serializable {
-
-
-    private List<Message> messages;
-
     @Inject
     MessageService messageService;
+    private List<Message> messages;
 
     @PostConstruct
-    public void init() {
+    public void initMessages() {
         messages = messageService.getAll();
-
     }
 
     public List<Message> getMessages() {
@@ -33,6 +29,4 @@ public class ShowMessageBean implements Serializable {
     public void setMessages(List<Message> messages) {
         this.messages = messages;
     }
-
-
 }

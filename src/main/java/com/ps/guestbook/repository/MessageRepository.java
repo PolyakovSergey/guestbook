@@ -1,6 +1,6 @@
-package com.mkyong.repository;
+package com.ps.guestbook.repository;
 
-import com.mkyong.entity.Message;
+import com.ps.guestbook.entity.Message;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MessageRepository extends JpaRepository<Message, Long> {

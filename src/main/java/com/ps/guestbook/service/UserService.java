@@ -1,6 +1,6 @@
-package com.mkyong.service;
+package com.ps.guestbook.service;
 
-import com.mkyong.entity.User;
+import com.ps.guestbook.entity.User;
 
 import java.util.List;
 

@@ -1,8 +1,8 @@
-package com.mkyong.service.impl;
+package com.ps.guestbook.service.impl;
 
-import com.mkyong.entity.Message;
-import com.mkyong.repository.MessageRepository;
-import com.mkyong.service.MessageService;
+import com.ps.guestbook.entity.Message;
+import com.ps.guestbook.repository.MessageRepository;
+import com.ps.guestbook.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

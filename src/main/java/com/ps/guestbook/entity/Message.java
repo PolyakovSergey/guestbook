@@ -1,4 +1,4 @@
-package com.mkyong.entity;
+package com.ps.guestbook.entity;
 
 import org.hibernate.annotations.Type;
 

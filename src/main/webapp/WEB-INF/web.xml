@@ -5,8 +5,6 @@
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          id="WebApp_ID" version="2.5">
 
-    <display-name>JavaServerFaces</display-name>
-
     <!-- Add Support for Spring -->
     <listener>
         <listener-class>
@@ -31,18 +29,11 @@
         <param-value>6Ld7pMESAAAAAMhr5WSk5bcRrff8Y08NtDi8Buoq</param-value>
     </context-param>
 
-
-
     <!-- Change to "Production" when you are ready to deploy -->
     <context-param>
         <param-name>javax.faces.PROJECT_STAGE</param-name>
         <param-value>Development</param-value>
     </context-param>
-
-    <!-- Welcome page -->
-    <welcome-file-list>
-        <welcome-file>default.jsf</welcome-file>
-    </welcome-file-list>
 
     <!-- JSF Mapping -->
     <servlet>

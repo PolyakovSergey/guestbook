@@ -1,4 +1,4 @@
-package com.mkyong.util;
+package com.ps.guestbook.util;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
@@ -9,7 +9,7 @@ import javax.faces.validator.ValidatorException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@FacesValidator("com.mkyong.util.TextValidator")
+@FacesValidator("com.ps.guestbook.util.TextValidator")
 public class TextValidator implements Validator {
 
     private static final String HTML_PATTERN = "^(?!<[^>]*>).*$";
@@ -26,7 +26,7 @@ public class TextValidator implements Validator {
         matcher = pattern.matcher(o.toString());
 
         if(!matcher.matches()){
-            FacesMessage msg =  new FacesMessage("Text validation failed.", "Invalid Text format.");
+            FacesMessage msg =  new FacesMessage("Text: Invalid Text format", "Invalid Text format");
             msg.setSeverity(FacesMessage.SEVERITY_ERROR);
             throw new ValidatorException(msg);
         }

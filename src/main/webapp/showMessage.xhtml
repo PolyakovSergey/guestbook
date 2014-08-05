@@ -23,38 +23,38 @@
                                             {RowsPerPageDropdown}"
                          var="message" value="#{showMessageBean.messages}" style="margin-bottom:40px">
                 <f:facet name="header">
-                    <p:commandButton value="Messages" action="#{showMessageBean.init()}" update="@all"/>
+                    <p:commandButton value="Messages" action="#{showMessageBean.initMessages()}" update="@all"/>
                 </f:facet>
                 <p:column headerText="Id" sortBy="#{message.id}">
-                    <h:outputText value="#{message.id}" />
+                    <h:outputText value="#{message.id}"/>
                 </p:column>
 
                 <p:column headerText="User name" sortBy="#{message.user.name}">
-                    <h:outputText value="#{message.user.name}" />
+                    <h:outputText value="#{message.user.name}"/>
                 </p:column>
 
                 <p:column headerText="E-mail" sortBy="#{message.user.email}">
-                    <h:outputText value="#{message.user.email}" />
+                    <h:outputText value="#{message.user.email}"/>
                 </p:column>
 
                 <p:column headerText="IP Address">
-                    <h:outputText value="#{message.user.ipAddress}" />
+                    <h:outputText value="#{message.user.ipAddress}"/>
                 </p:column>
 
                 <p:column headerText="Browser">
-                    <h:outputText value="#{message.user.browser}" />
+                    <h:outputText value="#{message.user.browser}"/>
                 </p:column>
 
                 <p:column headerText="Homepage">
-                    <h:outputText value="#{message.homepage}" />
+                    <h:outputText value="#{message.homepage}"/>
                 </p:column>
 
                 <p:column headerText="Text">
-                    <h:outputText value="#{message.text}" />
+                    <h:outputText value="#{message.text}"/>
                 </p:column>
 
                 <p:column headerText="Create Date" sortBy="#{message.createDate}">
-                    <h:outputText value="#{message.createDate}" />
+                    <h:outputText value="#{message.createDate}"/>
                 </p:column>
             </p:dataTable>
         </h:form>
