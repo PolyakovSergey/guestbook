@@ -34,14 +34,14 @@
             <p:outputLabel for="homepage" value="Homepage: " />
             <p:inputText id="homepage" value="#{messageBean.message.homepage}" label="homepage" required="false">
                 <!--<f:validateLength maximum="20"/>-->
-                <f:validator validatorId="com.ps.guestbook.util.HomepageValidator"/>
+                <f:validator validatorId="com.ps.guestbook.validator.HomepageValidator"/>
             </p:inputText>
 
 
             <p:outputLabel for="text" value="Text: " />
             <p:inputTextarea id="text" rows="10" cols="50" value="#{messageBean.message.text}" queryDelay="750" minQueryLength="4" required="true">
                 <f:validateLength maximum="1000"/>
-                <f:validator validatorId="com.ps.guestbook.util.TextValidator"/>
+                <f:validator validatorId="com.ps.guestbook.validator.TextValidator"/>
             </p:inputTextarea>
 
             <p:outputLabel for="captcha" value="Enter the image code: " />

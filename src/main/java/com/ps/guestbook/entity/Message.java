@@ -1,5 +1,6 @@
 package com.ps.guestbook.entity;
 
+import com.ps.guestbook.entity.listener.DateListener;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -7,12 +8,8 @@ import java.util.Date;
 
 @Entity
 @Table(name = "\"message\"")
-public class Message {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private long id;
+@EntityListeners({DateListener.class})
+public class Message extends AbstractEntity {
 
     @Column(name = "text")
     @Type(type = "text")
@@ -37,14 +34,6 @@ public class Message {
         this.homepage = homepage;
         this.createDate = createDate;
         this.user = user;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getHomepage() {
@@ -78,4 +67,19 @@ public class Message {
     public void setUser(User user) {
         this.user = user;
     }
+
+    @Override
+    public int hashCode() {
+        return getId();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Message){
+            Message message = (Message) obj;
+            return message.getId() == getId();
+        }
+        return false;
+    }
+
 }

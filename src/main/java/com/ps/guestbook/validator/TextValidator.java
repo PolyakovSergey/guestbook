@@ -1,4 +1,4 @@
-package com.ps.guestbook.util;
+package com.ps.guestbook.validator;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
@@ -9,7 +9,7 @@ import javax.faces.validator.ValidatorException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@FacesValidator("com.ps.guestbook.util.TextValidator")
+@FacesValidator("com.ps.guestbook.validator.TextValidator")
 public class TextValidator implements Validator {
 
     private static final String HTML_PATTERN = "^(?!<[^>]*>).*$";

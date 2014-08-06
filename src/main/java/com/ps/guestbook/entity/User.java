@@ -4,12 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "\"user\"")
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private long id;
+public class User extends AbstractEntity {
 
     @Column(name = "name")
     private String name;
@@ -49,14 +44,6 @@ public class User {
         this.ipAddress = ipAddress;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
@@ -71,5 +58,19 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public int hashCode() {
+        return getId();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof User){
+            User user = (User) obj;
+            return user.getId() == getId();
+        }
+        return false;
     }
 }

@@ -1,4 +1,4 @@
-package com.ps.guestbook.util;
+package com.ps.guestbook.validator;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
@@ -9,7 +9,7 @@ import javax.faces.validator.ValidatorException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@FacesValidator("com.ps.guestbook.util.HomepageValidator")
+@FacesValidator("com.ps.guestbook.validator.HomepageValidator")
 public class HomepageValidator implements Validator {
 
     private static final String URL_PATTERN = "(http://)?(www\\.)?[A-Za-z0-9]+\\.[a-z]{2,3}";

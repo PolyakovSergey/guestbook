@@ -2,6 +2,7 @@ package com.ps.guestbook.bean;
 
 import com.ps.guestbook.entity.Message;
 import com.ps.guestbook.service.MessageService;
+import org.springframework.data.domain.PageRequest;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ViewScoped;

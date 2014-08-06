@@ -54,8 +54,6 @@ public class MessageBean {
     }
 
     private String getUserIpAddress() {
-        /*HttpServletRequest httpServletRequest = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
-        String ip = httpServletRequest.getRemoteAddr();*/
         String remoteAddress = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes())
                 .getRequest().getRemoteAddr();
         return remoteAddress;
